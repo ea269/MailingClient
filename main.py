@@ -37,3 +37,12 @@ attachment = open(filename, 'rb')
 # Payload obj
 p = base.MIMEBase('application', 'octet-stream')
 p.set_payload(attachment.read())
+
+# Encode 
+encoders.encode_base64(p)
+p.add_headers('Content-Disposition', f'attachment; filename={filename}')
+message.attach(p)
+
+# Convert to string
+text = msg.as_string()
+server.sendmail(email, to, text)
