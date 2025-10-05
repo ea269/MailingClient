@@ -41,7 +41,7 @@ p.set_payload(attachment.read())
 
 # Encode 
 encoders.encode_base64(p)
-p.add_headers('Content-Disposition', f'attachment; filename={filename}')
+p.add_header('Content-Disposition', f'attachment; filename={filename}')
 mail.attach(p)
 
 # Convert to string
