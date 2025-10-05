@@ -6,13 +6,14 @@ from email.mime import text, base, multipart
 server = smtplib.SMTP('smtp.gmail.com', 587)
 
 # Start service
-server.ehlo()
+server.starttls()
 
 # Login info 
 with open('credentials.txt', 'r') as f:
-    email = f.read()
-    password = f.read()
-    to = f.read()
+    lines = f.readlines()
+    email = lines[0].strip()
+    password = lines[1].strip()
+    to = lines[2].strip()
 
 # Login
 server.login(email, password)
