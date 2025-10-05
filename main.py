@@ -1,7 +1,9 @@
 import smtplib
+from email import encoders
+from email.mime import text, base, multipart
 
-# Gmail.com w/ port 456 w/ TLS
-server = smtplib.SMTP('smtp.gmail.com', 456)
+# Gmail.com w/ port 587 w/ TLS
+server = smtplib.SMTP('smtp.gmail.com', 587)
 
 # Start service
 server.ehlo()
@@ -12,4 +14,4 @@ with open('credentials.txt', 'r') as f:
     password = f.read()
 
 # Login
-server.login(email, passwrod)
+server.login(email, password)
