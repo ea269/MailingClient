@@ -12,6 +12,17 @@ server.ehlo()
 with open('credentials.txt', 'r') as f:
     email = f.read()
     password = f.read()
+    to = f.read()
 
 # Login
 server.login(email, password)
+
+# Message attributes
+message = multipart.MIMEMultipart()
+message['From'] = 'dad'
+message['To'] = to
+message['Subject'] = 'Testing 1 2 3.'
+
+# Our mail body
+with open('mail.txt', 'r') as f:
+    mail = f.read()
