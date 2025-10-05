@@ -17,12 +17,23 @@ with open('credentials.txt', 'r') as f:
 # Login
 server.login(email, password)
 
-# Message attributes
+# Message headers
 message = multipart.MIMEMultipart()
 message['From'] = 'dad'
 message['To'] = to
 message['Subject'] = 'Testing 1 2 3.'
 
-# Our mail body
+# Message body
 with open('mail.txt', 'r') as f:
     mail = f.read()
+
+# Combine them
+message.attach(text.MIMEText(message, 'plain'))
+
+# Image
+filename = 'stern_dad.jpg'
+attachment = open(filename, 'rb')
+
+# Payload obj
+p = base.MIMEBase('application', 'octet-stream')
+p.set_payload(attachment.read())
