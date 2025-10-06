@@ -20,9 +20,9 @@ server.login(email, password)
 
 # Message headers
 mail = multipart.MIMEMultipart()
-mail['From'] = 'dad'
+mail['From'] = 'Dad'
 mail['To'] = to
-mail['Subject'] = 'Testing 1 2 3.'
+mail['Subject'] = 'Homework'
 
 # Message body
 with open('mail.txt', 'r') as f:
@@ -46,4 +46,10 @@ mail.attach(p)
 
 # Convert to string
 text = mail.as_string()
+
+# Send mail
 server.sendmail(email, to, text)
+
+print('Dad sent a message')
+
+server.quit()
